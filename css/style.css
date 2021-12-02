@@ -301,3 +301,28 @@ header ul li ul li a {
   left: 0;
   padding-top: 20px;
 }
+
+/* single-post */
+
+.single_post {
+  margin-bottom: 30px;
+}
+
+.single_post .info {
+  margin: 20px 0;
+}
+
+.single_post .info {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.single_post a {
+  text-decoration: underline;
+  font-size: 16px;
+}
+
+.single_post a:hover {
+  text-decoration: none;
+  color: #008489;
+}
