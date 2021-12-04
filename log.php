@@ -9,7 +9,7 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <script src="https://kit.fontawesome.com/753c2c422f.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Playfair+Display&display=swap" rel="stylesheet">
@@ -46,17 +46,11 @@
 
   <!-- FORM -->
   <div class="contianer req_form">
-    <form class="row justify-content-md-center" method="post" action="req.html">
-      <h2 class="col-12">Форма регистрации</h2>
+    <form class="row justify-content-md-center" method="post" action="log.html">
+      <h2 class="col-12">Авторизация</h2>
       <div class="mb-3 col-md-4">
         <label for="formGroupExampleInput" class="form-label">Ваш логин</label>
         <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
-      </div>
-      <div class="w-100"></div>
-      <div class="mb-3 col-md-4">
-        <label for="exampleInputEmail1" class="form-label">Email</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text">Ваш email адрес не будет использовам для спама.</div>
       </div>
       <div class="w-100"></div>
       <div class="mb-3 col-md-4">
@@ -64,14 +58,9 @@
         <input type="password" class="form-control" id="exampleInputPassword1">
       </div>
       <div class="w-100"></div>
-      <div class="mb-3 col-md-4">
-        <label for="exampleInputPassword2" class="form-label">ПОвторите пароль</label>
-        <input type="password" class="form-control" id="exampleInputPassword2">
-      </div>
-      <div class="w-100"></div>
       <div class="mb-3 col-12 col-md-4">
-        <button type="button" class="btn btn-primary">Регистрация</button>
-        <a href="auth.html">Войти</a>
+        <button type="button" class="btn btn-primary">Войти</button>
+        <a href="auth.html">Зарегистрироваться</a>
       </div>
     </form>
   </div>
