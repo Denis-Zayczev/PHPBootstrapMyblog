@@ -81,4 +81,41 @@ $params = [
 ];
 
 // tt(selectAll('users' , $params));
-tt(selectOne('users'));
+// tt(selectOne('users'));
+
+function insert($table, $params) {
+  global $pdo;
+
+  $i = 0;
+  $coll = '';
+  $mask = '';
+  foreach ($params as $key => $value){
+    if ($i === 0) {
+      $coll = $coll . "$key";
+      $mask = $mask ."'" . "$value". "'";
+    }else {
+      $coll = $coll . ", $key";
+      $mask = $mask .", '" . "$value". "'";
+    }
+    $i++;
+  }
+
+  $sql = "INSERT INTO $table ($coll) VALUES ($mask);";
+
+  // tt($sql);
+  // exit();
+
+  $query = $pdo->prepare($sql);
+  $query->execute($params);
+  dbCheckError($query);
+}
+
+$arrData = [
+  'admin' => '1',
+  'username' => 'Maskimka',
+  'email' => 'test22@re.ru',
+  'password' => '1212122',
+  'created' => '2021-01-01 00:00:01'
+];
+
+insert('users', $arrData);
