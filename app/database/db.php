@@ -83,6 +83,8 @@ $params = [
 // tt(selectAll('users' , $params));
 // tt(selectOne('users'));
 
+
+//Запись в таблицу БД
 function insert($table, $params) {
   global $pdo;
 
@@ -102,20 +104,63 @@ function insert($table, $params) {
 
   $sql = "INSERT INTO $table ($coll) VALUES ($mask);";
 
-  // tt($sql);
-  // exit();
-
   $query = $pdo->prepare($sql);
   $query->execute($params);
   dbCheckError($query);
 }
 
-$arrData = [
-  'admin' => '1',
-  'username' => 'Maskimka',
-  'email' => 'test22@re.ru',
-  'password' => '1212122',
-  'created' => '2021-01-01 00:00:01'
-];
+// $arrData = [
+//   'admin' => '1',
+//   'username' => 'Maskimka',
+//   'email' => 'test22@re.ru',
+//   'password' => '1212122',
+//   'created' => '2021-01-01 00:00:01'
+// ];
 
-insert('users', $arrData);
+// insert('users', $arrData);
+
+//Обновление строки в таблице
+function update($table, $id, $params) {
+  global $pdo;
+
+  $i = 0;
+  $str = '';
+  foreach ($params as $key => $value){
+    if ($i === 0) {
+      $str = $str . $key . " = '" . $value . "'";
+    }else {
+      $str = $str . ", " . $key . " = '" . $value . "'";
+    }
+    $i++;
+  }
+
+  //UPDATE `users` SET username = 'test', 'password'='5555' WHERE id = 14
+  $sql = "UPDATE $table SET $str WHERE id = $id";
+  // tt($sql);
+  // exit();
+  $query = $pdo->prepare($sql);
+  $query->execute($params);
+  dbCheckError($query);
+}
+
+// $param = [
+//   'admin' => '0',
+//   'password' => '333',
+//   'email' => 'rr@gmail.com'
+// ];
+
+// update('users', 5, $param);
+
+
+//удаление строки в таблице
+function delete($table, $id) {
+  global $pdo;
+
+  //DELETE FROM 'users' WHERE id = 19
+  $sql = "DELETE FROM $table WHERE id = $id";
+  $query = $pdo->prepare($sql);
+  $query->execute();
+  dbCheckError($query);
+}
+
+delete('users',  6);
