@@ -9,8 +9,6 @@ function tt($value)
   echo '</pre>';
 }
 
-
-
 //Проверка выполнения запросы к БД
 function dbCheckError($query){
   $errInfo = $query->errorInfo();
@@ -161,6 +159,7 @@ function delete($table, $id) {
   $query = $pdo->prepare($sql);
   $query->execute();
   dbCheckError($query);
+  return $pdo->lastInsertId();
 }
 
-delete('users',  6);
+// delete('users',  6);

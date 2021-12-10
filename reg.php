@@ -1,4 +1,8 @@
-<?php include("path.php"); ?>
+<?php 
+  include "path.php" ; 
+  include "app/controllers/users.php";
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -23,32 +27,32 @@
 
   <!-- FORM -->
   <div class="contianer req_form">
-    <form class="row justify-content-md-center" method="post" action="req.html">
+    <form class="row justify-content-md-center" method="post" action="reg.php">
       <h2 class="col-12">Форма регистрации</h2>
       <div class="mb-3 col-md-4">
         <label for="formGroupExampleInput" class="form-label">Ваш логин</label>
-        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
+        <input name="login" type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
       </div>
       <div class="w-100"></div>
       <div class="mb-3 col-md-4">
         <label for="exampleInputEmail1" class="form-label">Email</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <input name="mail" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         <div id="emailHelp" class="form-text">Ваш email адрес не будет использовам для спама.</div>
       </div>
       <div class="w-100"></div>
       <div class="mb-3 col-md-4">
         <label for="exampleInputPassword1" class="form-label">Пароль</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
+        <input name="pass-first" type="password" class="form-control" id="exampleInputPassword1">
       </div>
       <div class="w-100"></div>
       <div class="mb-3 col-md-4">
-        <label for="exampleInputPassword2" class="form-label">ПОвторите пароль</label>
-        <input type="password" class="form-control" id="exampleInputPassword2">
+        <label for="exampleInputPassword2" class="form-label">Повторите пароль</label>
+        <input name="pass-second" type="password" class="form-control" id="exampleInputPassword2">
       </div>
       <div class="w-100"></div>
       <div class="mb-3 col-12 col-md-4">
-        <button type="button" class="btn btn-primary">Регистрация</button>
-        <a href="auth.html">Войти</a>
+        <button type="submit" class="btn btn-primary" name="button-reg">Регистрация</button>
+        <a href="auth.php">Войти</a>
       </div>
     </form>
   </div>
