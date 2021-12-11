@@ -350,3 +350,12 @@ header ul li ul li a {
   margin-left: 55px;
   transition: all .3s;
 }
+
+
+/* FORMS */
+
+form div.err p {
+  color: red;
+  font-style: italic;
+  font-size: 1.2rem;
+}

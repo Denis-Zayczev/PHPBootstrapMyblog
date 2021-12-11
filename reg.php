@@ -29,6 +29,10 @@
   <div class="contianer req_form">
     <form class="row justify-content-md-center" method="post" action="reg.php">
       <h2 class="col-12">Форма регистрации</h2>
+      <div class="mb-3 col-md-4 err">
+        <p><?=$errMsg?></p>
+      </div>
+      <div class="w-100"></div>
       <div class="mb-3 col-md-4">
         <label for="formGroupExampleInput" class="form-label">Ваш логин</label>
         <input name="login" type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
