@@ -8,11 +8,18 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
   $admin = 0;
     $login = trim($_POST['login']);
     $email = trim($_POST['mail']);
-    $pass =  trim($_POST['pass-second']);
+    $passF = trim($_POST['pass-first']);
+    $passS = trim($_POST['pass-second']);
 
-    if($login === '' || $email === '' || $pass === '') {
+    if($login === '' || $email === '' || $passF === '') {
       $errMsg = "Не все поля заполнены!";
-    } else {
+    } elseif (mb_strlen($login, 'UTF8') <2){
+      $errMsg = "Логин слишком короткий";
+    } elseif ($passF !== $passS){
+      $errMsg = "Пароли не совпадют";
+    }
+    else {
+      $pass = password_hash($passF, PASSWORD_DEFAULT);
       $post = [
         'admin' => $admin, 
         'username' => $login, 
@@ -21,15 +28,15 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
       ];
 
       // $id = insert('users', $post);
-      $isSubmit = true;
       tt($post);
     }
 
-    
-
+  
 
     // $last_row = selectOne('users', ['id' => $id]);
 } else {
   echo 'GET';
+  $login = '';
+  $email = '';
 }
 
