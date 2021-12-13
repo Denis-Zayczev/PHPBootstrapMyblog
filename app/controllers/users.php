@@ -4,12 +4,15 @@ include "app/database/db.php";
 $isSubmit = false;
 $errMsg = '';
 
+
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
   $admin = 0;
     $login = trim($_POST['login']);
     $email = trim($_POST['mail']);
     $passF = trim($_POST['pass-first']);
     $passS = trim($_POST['pass-second']);
+
+    
 
     if($login === '' || $email === '' || $passF === '') {
       $errMsg = "Не все поля заполнены!";
@@ -19,6 +22,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
       $errMsg = "Пароли не совпадют";
     }
     else {
+      $existence = selectOne('users', ['email' => $email]);
+      if (!empty($existence['email']) && $existence['email'] === $email) {
+        $errMsg = "Пользователь с такой почтой уже зарегистрирован";
+      } else {
       $pass = password_hash($passF, PASSWORD_DEFAULT);
       $post = [
         'admin' => $admin, 
@@ -27,9 +34,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         'password' => $pass
       ];
 
-      // $id = insert('users', $post);
-      tt($post);
-    }
+      $id = insert('users', $post);
+      $errMsg = "Пользователь " . "<strong>" . $login . "</strong>" . " успешно зарегистрирован!";
+    }}
 
   
 
